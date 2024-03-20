@@ -20,7 +20,12 @@ public class Main {
                     addNewDish();
                     break;
                 case "2":
-                    generateDishCombo();
+                    if (dc.checkMapNotEmpty()) {
+                        generateDishCombo();
+                    } else {
+                        System.out.println("Список блюд пуст, сначала надо заполнить список блюд");
+                        System.out.println();
+                    }
                     break;
                 case "3":
                     return;
@@ -41,7 +46,8 @@ public class Main {
         System.out.println("Введите название блюда:");
         String dishName = scanner.nextLine();
 
-        // добавьте новое блюдо
+        DinnerConstructor.addDish(dishType, dishName); // добавьте новое блюдо
+        System.out.println();
     }
 
     private static void generateDishCombo() {
@@ -54,12 +60,12 @@ public class Main {
         System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
         String nextItem = scanner.nextLine();
 
-        //реализуйте ввод типов блюд
-        while (!nextItem.isEmpty()) {
-
+        while (!nextItem.isEmpty()) { //реализуйте ввод типов блюд
+            DinnerConstructor.getTypeDish(nextItem);
+            nextItem = scanner.nextLine();
         }
 
-        // сгенерируйте комбинации блюд и выведите на экран
+        DinnerConstructor.generateCombination(numberOfCombos); // сгенерируйте комбинации блюд и выведите на экран
 
     }
 }
