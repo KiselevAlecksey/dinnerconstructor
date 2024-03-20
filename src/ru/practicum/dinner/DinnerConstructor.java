@@ -73,7 +73,6 @@ public class DinnerConstructor {
     }
 
     boolean checkMapNotEmpty() {
-        boolean notEmpty = !dishesList.isEmpty();
-        return notEmpty;
+        return !dishesList.isEmpty();
     }
 }
